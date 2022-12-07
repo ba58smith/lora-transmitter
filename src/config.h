@@ -5,8 +5,8 @@
 // for that unit (defined below). If you change this, the first upload to the transmitter
 // must be with //#define LORA_SETUP_REQUIRED in main.cpp UN-commented. Upload it, it will
 // write the LORA_NODE_ADDRESS to EEPROM, then RE-comment that line, and upload again.
-#define BESSIE
-//#define TEST
+//#define BESSIE
+#define GARDEN
 //#define BOAT
 
 // Network must be the same (2) for all of my units to communicate w/ each other.
@@ -39,17 +39,17 @@ String TRANSMITTER_NAME = "Bessie";
 #define VOLTAGE_ALARM_EMAIL_THRESHOLD 60 // In MINUTES, not seconds
 #endif
 
-#ifdef TEST
-String TRANSMITTER_NAME = "Test";
-#define TIME_TO_SLEEP 60 // In seconds
+#ifdef GARDEN
+String TRANSMITTER_NAME = "Garden";
+#define TIME_TO_SLEEP 900 // In seconds
 #define LORA_NODE_ADDRESS 2202UL
 #define R1_VALUE 9500.0
 #define R2_VALUE 2145.0
-#define VOLTAGE_CALIBRATION 1.029
-#define VOLTAGE_ALARM_RANGE_LOWER 12.20
-#define VOLTAGE_ALARM_RANGE_UPPER 14.10
+#define VOLTAGE_CALIBRATION 1.0144
+#define VOLTAGE_ALARM_RANGE_LOWER 11.60 // "12V" LiFeO4 battery
+#define VOLTAGE_ALARM_RANGE_UPPER 14.60
 #define VOLTAGE_ALARM_CODE 21
-#define VOLTAGE_ALARM_EMAIL_THRESHOLD 5 // In MINUTES, not seconds
+#define VOLTAGE_ALARM_EMAIL_THRESHOLD 60 // In MINUTES, not seconds
 #endif
 
 #ifdef BOAT
@@ -60,7 +60,7 @@ String TRANSMITTER_NAME = "Boat";
 #define R2_VALUE 2158.0
 #define VOLTAGE_CALIBRATION 1.020
 #define VOLTAGE_ALARM_RANGE_LOWER 12.20
-#define VOLTAGE_ALARM_RANGE_UPPER 14.10
+#define VOLTAGE_ALARM_RANGE_UPPER 14.30
 #define VOLTAGE_ALARM_CODE 31
 #define VOLTAGE_ALARM_EMAIL_THRESHOLD 60 // In MINUTES, not seconds
 #endif

@@ -40,6 +40,10 @@ void setup() {
   lora.one_time_setup();
 #endif
 
+  // BAS: replace all of the rest of this with the code in
+  // lora-pool-transmitter:
+  // lora.send_data(voltage_sensor.reported_voltage());
+
   // Read the battery voltage and send it to the base station
   // But first, calibrate the ADC
   voltage_sensor.configure();
@@ -66,6 +70,7 @@ void setup() {
   // Turn off the LoRa to save battery
   lora.turn_off();
   
+  // BAS: replace all of this with the new "hibernate()"" code in lora-pool-transmitter
   // Get ready to "hibernate"
   esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
   prepare_hibernation();

@@ -165,12 +165,21 @@ public:
         // String(voltage, 2); makes voltage always have two decimal places.
         String volt_str = String(voltage, 2);
         uint16_t alarm_code = 0;
-        if (voltage < VOLTAGE_ALARM_RANGE_LOWER || voltage > VOLTAGE_ALARM_RANGE_UPPER) {
-            alarm_code = VOLTAGE_ALARM_CODE;
+        uint16_t interval = 0;
+        uint16_t max_emails = 0;
+        if (voltage < LOW_VOLTAGE_ALARM_VALUE) {
+            alarm_code = LOW_VOLTAGE_ALARM_CODE;
+            interval = LOW_VOLTAGE_EMAIL_INTERVAL;
+            max_emails = LOW_VOLTAGE_ALARM_MAX_EMAILS;
+        }
+        else if (voltage > HIGH_VOLTAGE_ALARM_VALUE) {
+            alarm_code = HIGH_VOLTAGE_ALARM_CODE;
+            interval = HIGH_VOLTAGE_EMAIL_INTERVAL;
+            max_emails = HIGH_VOLTAGE_ALARM_MAX_EMAILS;
         }
         uint16_t address = LORA_BASE_STATION_ADDRESS;
         String data_str = String(TRANSMITTER_NAME + "%Voltage%" + volt_str + "%" + alarm_code
-                        + "%" + VOLTAGE_ALARM_EMAIL_THRESHOLD + "%" + VOLTAGE_MAX_ALARM_EMAILS);
+                        + "%" + interval + "%" + max_emails);
         uint8_t data_length = data_str.length();
         String payload = "AT+SEND=" + String(address) + ","
                          + String(data_length) + "," 

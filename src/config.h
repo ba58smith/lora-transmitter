@@ -6,8 +6,8 @@
 // must be with //#define LORA_SETUP_REQUIRED in main.cpp UN-commented. Upload it, it will
 // write the LORA_NODE_ADDRESS to EEPROM, then RE-comment that line, and upload again.
 //#define BESSIE
-#define GARDEN
-//#define BOAT
+//#define GARDEN
+#define BOAT
 
 // Network must be the same (2) for all of my units to communicate w/ each other.
 // After re-writing the receiver code, this will change to some other unique identifier.
@@ -33,11 +33,17 @@ String TRANSMITTER_NAME = "Bessie";
 // measurements taken of the source voltage, to get the final voltage correct. Calibrate
 // at 12.60 for known input voltage.
 #define VOLTAGE_CALIBRATION 1.038
-#define VOLTAGE_ALARM_RANGE_LOWER 12.20
-#define VOLTAGE_ALARM_RANGE_UPPER 14.10
-#define VOLTAGE_ALARM_CODE 3
-#define VOLTAGE_ALARM_EMAIL_THRESHOLD 60 // In MINUTES, not seconds
-#define VOLTAGE_MAX_ALARM_EMAILS 5
+
+#define LOW_VOLTAGE_ALARM_VALUE 12.20
+#define LOW_VOLTAGE_ALARM_CODE 1
+#define LOW_VOLTAGE_EMAIL_INTERVAL 90 // In MINUTES
+#define LOW_VOLTAGE_ALARM_MAX_EMAILS 5
+
+#define HIGH_VOLTAGE_ALARM_VALUE 14.00
+#define HIGH_VOLTAGE_ALARM_CODE 3
+#define HIGH_VOLTAGE_EMAIL_INTERVAL 15 // In MINUTES, not seconds
+#define HIGH_VOLTAGE_ALARM_MAX_EMAILS 7
+
 #endif
 
 #ifdef GARDEN
@@ -47,11 +53,16 @@ String TRANSMITTER_NAME = "Garden";
 #define R1_VALUE 9500.0
 #define R2_VALUE 2145.0
 #define VOLTAGE_CALIBRATION 1.0144
-#define VOLTAGE_ALARM_RANGE_LOWER 13.00 // "12V" LiFeO4 battery
-#define VOLTAGE_ALARM_RANGE_UPPER 14.60
-#define VOLTAGE_ALARM_CODE 3
-#define VOLTAGE_ALARM_EMAIL_THRESHOLD 60 // In MINUTES, not seconds
-#define VOLTAGE_MAX_ALARM_EMAILS 5
+
+#define LOW_VOLTAGE_ALARM_VALUE 13.00 // "12V" LiFeO4 battery
+#define LOW_VOLTAGE_ALARM_CODE 1
+#define LOW_VOLTAGE_EMAIL_INTERVAL 90 // In MINUTES
+#define LOW_VOLTAGE_ALARM_MAX_EMAILS 5
+
+#define HIGH_VOLTAGE_ALARM_VALUE 14.60
+#define HIGH_VOLTAGE_ALARM_CODE 3
+#define HIGH_VOLTAGE_EMAIL_INTERVAL 15 // In MINUTES, not seconds
+#define HIGH_VOLTAGE_ALARM_MAX_EMAILS 7
 #endif
 
 #ifdef BOAT
@@ -61,11 +72,16 @@ String TRANSMITTER_NAME = "Boat";
 #define R1_VALUE 9480.0
 #define R2_VALUE 2158.0
 #define VOLTAGE_CALIBRATION 1.020
-#define VOLTAGE_ALARM_RANGE_LOWER 12.20
-#define VOLTAGE_ALARM_RANGE_UPPER 14.30
-#define VOLTAGE_ALARM_CODE 3
-#define VOLTAGE_ALARM_EMAIL_THRESHOLD 60 // In MINUTES, not seconds
-#define VOLTAGE_MAX_ALARM_EMAILS 5
+
+#define LOW_VOLTAGE_ALARM_VALUE 12.20
+#define LOW_VOLTAGE_ALARM_CODE 1
+#define LOW_VOLTAGE_EMAIL_INTERVAL 90 // In MINUTES
+#define LOW_VOLTAGE_ALARM_MAX_EMAILS 5
+
+#define HIGH_VOLTAGE_ALARM_VALUE 14.00
+#define HIGH_VOLTAGE_ALARM_CODE 3
+#define HIGH_VOLTAGE_EMAIL_INTERVAL 15 // In MINUTES, not seconds
+#define HIGH_VOLTAGE_ALARM_MAX_EMAILS 7
 #endif
 
 #endif // #ifndef _CONFIG_H_

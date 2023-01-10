@@ -78,7 +78,8 @@ String TRANSMITTER_NAME = "Boat";
 #define LOW_VOLTAGE_EMAIL_INTERVAL 90 // In MINUTES
 #define LOW_VOLTAGE_ALARM_MAX_EMAILS 5
 
-#define HIGH_VOLTAGE_ALARM_VALUE 14.00
+#define HIGH_VOLTAGE_ALARM_VALUE 14.35 // 14.40 is max recommended charge voltage for AGM batteries
+                                       // https://cloreautomotive.com/agm-batteries-what-you-need-to-know/
 #define HIGH_VOLTAGE_ALARM_CODE 3
 #define HIGH_VOLTAGE_EMAIL_INTERVAL 15 // In MINUTES, not seconds
 #define HIGH_VOLTAGE_ALARM_MAX_EMAILS 7

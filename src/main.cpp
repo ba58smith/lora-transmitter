@@ -40,6 +40,12 @@ void setup() {
   lora.one_time_setup();
 #endif
 
+  // Add the appropriate "set" method(s) here to change most of
+  // the LoRa parameters, if desired.
+  // EXAMPLE: lora->set_output_power(10);
+  lora.set_bandwidth(9);
+  lora.set_coding_rate(4);
+
   // BAS: replace all of the rest of this with the code in
   // lora-pool-transmitter:
   // lora.send_data(voltage_sensor.reported_voltage());

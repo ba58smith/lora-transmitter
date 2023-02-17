@@ -26,7 +26,7 @@ uint8_t voltage_measurement_pin = 32;
 
 ReyaxLoRa lora(lora_pin);
 
-ESP32AnalogReader voltage_sensor(voltage_measurement_pin);
+VoltageSensor voltage_sensor(voltage_measurement_pin);
 
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
@@ -46,29 +46,8 @@ void setup() {
   // EXAMPLE: lora->set_output_power(10);
   //          lora->send_and_reply("AT+CRFOP?");
 
-  // BAS: replace all of the rest of this with the code in
-  // lora-pool-transmitter:
-  // lora.send_data(voltage_sensor.reported_voltage());
-
   // Read the battery voltage and send it to the base station
-  // But first, calibrate the ADC
-  voltage_sensor.configure();
-  float voltage = 0;
-  // get an average of 30 reads, 50ms apart
-  for (uint8_t x = 0; x < 30; x++) {
-    voltage += voltage_sensor.read();
-    delay(50);
-  }
-  voltage = voltage / 30.0;
-  
-  // Reverse the effect of the voltage divider circuit
-  voltage = voltage_multiplier(voltage, R1_VALUE, R2_VALUE);
-  
-  // Apply the final calibration adjustment
-  voltage = voltage * VOLTAGE_CALIBRATION;
-  
-  // And send the value to the LoRa to transmit
-  lora.send_data(voltage);
+  lora.send_data(voltage_sensor.reported_voltage());
   
   // Don't turn it off too soon
   delay(2000);

@@ -5,9 +5,9 @@
 // for that unit (defined below). If you change this, the first upload to the transmitter
 // must be with //#define LORA_SETUP_REQUIRED in main.cpp UN-commented. Upload it, it will
 // write the LORA_NODE_ADDRESS to EEPROM, then RE-comment that line, and upload again.
-//#define BESSIE
+#define BESSIE
 //#define GARDEN
-#define BOAT
+//#define BOAT
 
 // Network must be the same (2) for all of my units to communicate w/ each other.
 // After re-writing the receiver code, this will change to some other unique identifier.
